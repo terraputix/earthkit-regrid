@@ -35,16 +35,18 @@ dependencies = [
   "pyyaml",
   "scipy",
 ]
-optional-dependencies.test = [
+urls.Documentation = "https://earthkit-regrid.readthedocs.io/"
+urls.Homepage = "https://github.com/ecmwf/earthkit-regrid/"
+urls.Issues = "https://github.com/ecmwf/earthkit-regrid.issues"
+urls.Repository = "https://github.com/ecmwf/earthkit-regrid/"
+
+[dependency-groups]
+dev = [
   "earthkit-data",
   "pytest",
   "pytest-cov",
   "requests",
 ]
-urls.Documentation = "https://earthkit-regrid.readthedocs.io/"
-urls.Homepage = "https://github.com/ecmwf/earthkit-regrid/"
-urls.Issues = "https://github.com/ecmwf/earthkit-regrid.issues"
-urls.Repository = "https://github.com/ecmwf/earthkit-regrid/"
 
 [tool.setuptools.packages.find]
 include = [ "earthkit.regrid" ]
