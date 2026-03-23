@@ -282,10 +282,10 @@ class LocalAccessor(MatrixAccessor):
         True
 
     def index_path(self):
-        return os.path.join(self._path, _INDEX_FILENAME)
+        return f"{self._path.rstrip('/')}/{_INDEX_FILENAME}"
 
     def matrix_path(self, name):
-        return os.path.join(self._path, name)
+        return f"{self._path.rstrip('/')}/{name}"
 
     def reload(self, strict=False):
         pass
@@ -370,7 +370,7 @@ class MatrixIndex(dict):
 
     @staticmethod
     def matrix_path(item):
-        return os.path.join(MatrixIndex.matrix_dir_name(item), item["_name"] + ".npz")
+        return f"{MatrixIndex.matrix_dir_name(item)}/{item['_name']}.npz"
 
     def find(self, gridspec_in, gridspec_out, method):
         gridspec_in = GridSpec.from_dict(gridspec_in)
@@ -519,7 +519,7 @@ class MatrixDb:
 
         matrix_index_path = self._matrix_index_path(entry)
         src_file = self._matrix_fs_path(entry)
-        target_file = os.path.join(out_dir, matrix_index_path)
+        target_file = f"{out_dir.rstrip('/')}/{matrix_index_path}"
 
         if not exist_ok and os.path.exists(target_file):
             if not dry_run:
